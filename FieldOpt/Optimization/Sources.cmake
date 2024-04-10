@@ -27,6 +27,7 @@ SET(OPTIMIZATION_HEADERS
 	objective/NPV.h
 	objective/objective.h
 	objective/weightedsum.h
+	objective/externalresult.h
 	optimization_exceptions.h
 	optimizer.h
 	optimizers/APPS.h
@@ -76,6 +77,7 @@ SET(OPTIMIZATION_SOURCES
 	objective/NPV.cpp
 	objective/objective.cpp
 	objective/weightedsum.cpp
+	objective/externalresult.cpp
 	optimizer.cpp
 	optimizers/APPS.cpp
 	optimizers/ExhaustiveSearch2DVert.cpp
