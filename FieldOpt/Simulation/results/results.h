@@ -40,11 +40,14 @@ namespace Simulation {
             Property GetPropertyKeyFromString(QString prop) {
                 if (prop == "CumulativeOilProduction") return CumulativeOilProduction;
                 else if (prop == "CumulativeGasProduction") return CumulativeGasProduction;
+                else if (prop == "CumulativeGasInjection") return CumulativeGasInjection;
                 else if (prop == "CumulativeWaterProduction") return CumulativeWaterProduction;
                 else if (prop == "CumulativeWaterInjection") return CumulativeWaterInjection;
                 else if (prop == "CumulativeWellOilProduction") return CumulativeWellOilProduction;
                 else if (prop == "CumulativeWellGasProduction") return CumulativeWellGasProduction;
                 else if (prop == "CumulativeWellWaterProduction") return CumulativeWellWaterProduction;
+                else if (prop == "CumulativeWellGasInjection") return CumulativeWellGasInjection;
+                else if (prop == "CumulativeWellWaterInjection") return CumulativeWellWaterInjection;
                 else if (prop == "Time") return Time;
                 else throw ResultPropertyKeyDoesNotExistException("");
             }

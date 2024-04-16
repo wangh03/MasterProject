@@ -1,5 +1,6 @@
 /******************************************************************************
  * Created: 16.12.2015 2015 by einar
+ * Modified by Wang Hou (2015-2024) <wang.hou@ntnu.no>
  *
  * This file is part of the FieldOpt project.
  *
@@ -35,6 +36,7 @@
 #include "Optimization/optimizers/compass_search.h"
 #include "Optimization/optimizers/ExhaustiveSearch2DVert.h"
 #include "Optimization/objective/weightedsum.h"
+#include "Optimization/objective/externalresult.h"
 #include "Simulation/simulator_interfaces/eclsimulator.h"
 #include "Simulation/simulator_interfaces/adgprssimulator.h"
 #include "Utilities/math.hpp"
@@ -153,6 +155,12 @@ void AbstractRunner::InitializeObjectiveFunction()
             if (VERB_RUN >=1) Printer::ext_info("Using NPV-type objective function.", "Runner", "AbstractRunner");
             objective_function_ = new Optimization::Objective::NPV(settings_->optimizer(), simulator_->results(), model_);
             break;
+
+        case Settings::Optimizer::ObjectiveType::ExternalResult:
+            if (VERB_RUN >=1) Printer::ext_info("Using ExternalResult-type objective function.", "Runner", "AbstractRunner");
+            objective_function_ = new Optimization::Objective::ExternalResult(settings_->optimizer(), model_);
+            break;
+
         default:
             throw std::runtime_error("Unable to initialize runner: objective function type not recognized.");
     }

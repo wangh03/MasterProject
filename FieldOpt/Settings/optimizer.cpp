@@ -1,5 +1,6 @@
 /******************************************************************************
    Copyright (C) 2015-2017 Einar J.M. Baumann <einar.baumann@gmail.com>
+   Modified by Wang Hou (2015-2024) <wang.hou@ntnu.no>
 
    This file is part of the FieldOpt project.
 
@@ -21,6 +22,7 @@
 #include "optimizer.h"
 #include "settings_exceptions.h"
 #include "Settings/helpers.hpp"
+
 
 namespace Settings {
 
@@ -536,7 +538,14 @@ Optimizer::Objective Optimizer::parseObjective(QJsonObject &json_objective) {
                 set_opt_prop_bool(component.usediscountfactor, json_components[i].toObject(), "UseDiscountFactor");
                 obj.NPV_sum.append(component);
             }
-        } else
+	}
+        else if (QString::compare(objective_type, "ExternalResult") == 0) {
+            obj.type = ObjectiveType::ExternalResult;
+            QJsonValue json_components = json_objective["ExternalResultComponent"];
+            QJsonObject external_result_component = json_components.toObject();
+            obj.external_result.external_file_path = external_result_component.value("ExternalFilePath").toString().toStdString();
+        }
+        else
             throw UnableToParseOptimizerObjectiveSectionException(
                 "Objective type " + objective_type.toStdString() + " not recognized");
         if (json_objective.contains("UsePenaltyFunction")) {

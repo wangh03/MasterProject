@@ -1,5 +1,6 @@
 /******************************************************************************
    Copyright (C) 2015-2017 Einar J.M. Baumann <einar.baumann@gmail.com>
+   Modified by Wang Hou (2015-2024) <wang.hou@ntnu.no>
 
    This file is part of the FieldOpt project.
 
@@ -52,7 +53,7 @@ class Optimizer
     PolarAzimuth, PolarElevation, PolarSplineBoundary
   };
   enum ConstraintWellSplinePointsType { MaxMin, Function};
-  enum ObjectiveType { WeightedSum, NPV};
+  enum ObjectiveType { WeightedSum, NPV, ExternalResult}; //<add a new type: ExternalResult >
 
   struct Parameters {
     // Common parameters
@@ -176,7 +177,13 @@ class Optimizer
     QList<WeightedSumComponent> weighted_sum; //!< The expression for the Objective function formulated as a weighted sum
     QList<NPVComponent> NPV_sum;  //!< The expression for the Objective function formulated as an NPV
 
+    //!< A new component of an external result objective function>
+    struct ExternalResultComponent{
+      std::string external_file_path;
+    };
+    ExternalResultComponent external_result; //! <an object for the Objective function formulated as an ExternalResult>
   };
+
 
   struct Constraint {
     struct RealCoordinate { double x; double y; double z; }; //!< Used to express (x,y,z) coordinates.
