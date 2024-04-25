@@ -1,10 +1,11 @@
 /******************************************************************************
 Copyright (C) 2015-2017 Brage S. Kristoffersen <brage_sk@hotmail.com>
+Modified by Wang Hou (2015-2024) <wang.hou@ntnu.no>
 
 This file is part of the FieldOpt project.
 
 FieldOpt is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
+it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
@@ -50,15 +51,15 @@ class NPV : public Objective {
     std::string property_name;
     double coefficient;
     Simulation::Results::Results::Property property;
-    int time_step;
-    std::string well;
-    double resolveValue(Simulation::Results::Results *results);
-    double resolveValueDiscount(Simulation::Results::Results *results, double time_step);
+    QString well;
+    double resolveValue(Simulation::Results::Results *results) const;
+    double resolveValueDiscount(Simulation::Results::Results *results, int time_step) const;
     double yearlyToMonthly(double discount_factor);
     std::string interval;
     double discount;
     bool usediscountfactor;
     bool is_json_component;
+    bool is_well_property;
   };
 
   QList<Component *> *components_; //!< List of gamma, k pairs.

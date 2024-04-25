@@ -536,6 +536,10 @@ Optimizer::Objective Optimizer::parseObjective(QJsonObject &json_objective) {
                 set_opt_prop_double(component.discount, json_components[i].toObject(), "DiscountFactor");
                 set_req_prop_string(component.interval, json_components[i].toObject(), "Interval");
                 set_opt_prop_bool(component.usediscountfactor, json_components[i].toObject(), "UseDiscountFactor");
+                if (json_components.at(i).toObject()["IsWellProp"].toBool()) {
+                    component.is_well_prop = true;
+                    component.well = json_components.at(i).toObject()["Well"].toString();
+                } else component.is_well_prop = false;
                 obj.NPV_sum.append(component);
             }
 	}
