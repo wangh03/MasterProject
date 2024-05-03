@@ -169,9 +169,10 @@ class Optimizer
     struct NPVComponent{
       double coefficient;
       std::string property;
+      bool is_well_prop; 
       std::string interval = "";
       bool usediscountfactor = false;
-      std::string well;
+      QString well;
       double discount = 0.0;
     };
     QList<WeightedSumComponent> weighted_sum; //!< The expression for the Objective function formulated as a weighted sum
