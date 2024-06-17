@@ -36,16 +36,6 @@ COMPDAT
 
 
 
--- WELL GAS INJECTION PROPERTIES
---
--- WELL STREAM SOURCE MAKEUP SEP
--- NAME OPTION DEPTH GAS STAGE
---WINJGAS
-  --INJ1 STREAM C02STREAM /
-
-
-
-
 
 -- ____________________________________________________
  WCONPROD
@@ -69,9 +59,7 @@ COMPDAT
 -- ____________________________________________________
 WCONINJE
 -- 1)     2)     3)    4)    5)        6)       7) 
--- INJ1   WATER  OPEN  BHP   1.00E+12  1*       5200 /
    INJ1   GAS    OPEN  RATE  1e+6      1*       300  /
--- INJ1   WATER  OPEN  RATE  1*        1*       250  /
 /
 
 -- 1) Well name
