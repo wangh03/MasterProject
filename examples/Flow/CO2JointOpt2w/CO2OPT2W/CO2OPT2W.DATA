@@ -15,7 +15,6 @@ GAS
 DISGAS
 
 CO2STORE
--- IMPES: def. solution
 
 -- ____________________________________________________
 METRIC
@@ -119,7 +118,7 @@ ROCK
 -- PREF    ROCKCOMPR.
 1.000272   4.4088E-5 /
 
--- The CO2STORE keyword require the salinity for all
+-- The CO2STORE keyword requires salinity for all
 -- grid cells.
 SALINITY
 0.7 / --10E-3 M kg per kg
@@ -147,121 +146,21 @@ PRESSURE
 /
 
 
--- -- ____________________________________________________
--- EQUIL      
--- -- Data for initialising fluids to potential equilibrium
--- -- DATUM  DATUM OWC   OWC   GOC   GOC  RSVD  RVVD  SOLN
--- -- DEPTH  PRESS DEPTH PCOW  DEPTH PCOG TABLE TABLE METH
---     1700  150   4000  0     3000     0     0     0    0
--- --    1)  2)    3)    4)    5)    6)    7)    8)   9)
--- /
--- -- 1) Datum depth
--- -- 2) Pressure at datum depth
--- -- 3) Depth of water oil contact, if no water 
--- --    initially present it can be below reservoir
--- -- 4) Oil-water capillary pressure at the water contact
--- -- 5) Depth of the gas-oil contact
--- -- 6) Gas-oil capillary pressure at the gas-oil contact
--- -- 7) Integer selecting the type of 
--- --    initialization for live black oil
--- -- 8) Integer selecting the type of initialization 
--- --    for black oil runs with wet gas
--- -- 9) Integer (N) defining the accuracy of 
--- --    the initial fluids in place calculation.
-
--- -- ____________________________________________________
--- RPTSOL
--- 0 0 1 /
-
--- 1: PRESSURE: Output of initial oil pressures
-
 -- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 SUMMARY
 
 ALL
 TCPU
 
--- SEPARATE
--- RUNSUM
--- --NARROW
--- RPTSMRY
--- 1 /
-
--- SUMTHIN
--- 50 /
-
--- --SKIP
-
--- -- ____________________________________________________
--- -- PRESSURE
--- FPR          Field pressure
--- FPRH         Field reservoir pressure (hydrocarbon?)
--- FPRP         Field pressure weighted by pore volume
--- ALL
--- -- ____________________________________________________
--- -- PORE VOLUME
--- FRPV         Pore Volume at Reservoir
--- FOPV         Pore Volume containing Oil
--- FHPV         Pore volume containing hydrocardon
--- FORMW        Total stock tank oil produced by water influx
-
--- -- ____________________________________________________
--- -- INIT VOLUME
--- -- FGIP         Gas init in place
--- -- FGIPG        Gas init in place (gas phase)
--- -- FGIPL        Gas init in place (liquid phase)
--- FOIP         Oil init in place
--- FOIPG        Oil init in place (gas phase)
--- FOIPL        Oil init in place (liquid phase)
--- FWIP         Water initially in place
-
--- -- ____________________________________________________
--- -- CURRENT CPU USAGE IN SECONDS
-
--- TCPU         
--- PERFORMA
-
-
 
 -- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 SCHEDULE
 -- CONTROLS ON OUTPUT AT EACH REPORT TIME
 
--- -- ____________________________________________________
--- RPTSCHED
--- RESTART=1
--- /
-
--- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
---   0 0 1 1 0 0 2 2 2 0  0  2  0  1  0
---   0 0 0 0 0 0 0 0 0 0  0  0  0  0  0
---   0 0 0 0 0 0 0 0 1 0  0  0  0  0  0 /
-
--- 1: PRESSURE: Output of grid block pressures
--- 14: WELSPECS
-
--- RPTSCHED
--- -- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
---   0 0 0 0 0 0 0 0 0 0  0  0  0  0  0
---   0 0 0 0 0 0 0 0 0 0  0  0  0  0  0
---   0 0 0 0 0 0 0 0 0 0  0  0  0  0  0 /
-
--- RPTSCHED
--- 1 1 1 1 1 0 0 0 1 0 0 2 0 1 2 0 0
--- 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-
 -- ____________________________________________________
 -- REQUEST RESTART FILE
 RPTRST
  'BASIC=2'/
-
--- WELL STREAM INJECTION COMPOSITION (OPM FLOW Keyword)
---
--- WELL -- WELL STREAM COMPOSITIONAL COMPONENT --
--- STREAM -- MOLE FRACTIONS --
---WELLSTRE
---'C02STREAM' 1.000 0.000 /
---/
 
 -- ____________________________________________________
 INCLUDE
