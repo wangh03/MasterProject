@@ -1,5 +1,6 @@
 # ------------------------------------------------------------
-# This file is used for the assignment of the result path to json
+# This file is used for assigning the path to the result from
+# the external NPV calculation to json
 # ------------------------------------------------------------
 
 import sys
